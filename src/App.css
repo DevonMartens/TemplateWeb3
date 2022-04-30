@@ -2,9 +2,78 @@ body {
   background-color: #202124;
   color: white;
   min-height: 100vh;
+  min-width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  text-align: center;
 }
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+}
+
+.whitelist {
+  display: grid;
+  justify-content: center;
+  align-content: end;
+  height: 70vh;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  height: 30vh;
+}
+
+.socialButtons {
+  display: flex;
+  justify-content: center;
+  width: 30vw;
+  margin: 0 auto;
+  align-content: center;
+}
+
+.socialButtons a {
+  padding: .9rem 2rem;
+  border: 1px solid #E21C21;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: none;
+  margin: 0 2vw;
+  align-self: center;
+  justify-self: center;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 3vh;
+  padding: 0;
+  width: 100vw;
+  justify-self: center;
+}
+
+
+.socialIcons a .icon {
+  color: transparent;
+  border-radius: 50%;
+  margin: 0 1vw;
+}
+
+.socialIcons a:hover .icon {
+  background-color: red;
+  border-radius: 50%;
+  margin: 0 1vw;
+}
+

@@ -40,7 +40,7 @@ export default function Whitelist() {
 
   useEffect(() => {
     if(networkId === 1 ) {
-      setNetworkMessage("You are connected to the Etherium Mainnet and can click on the banner below to be added to the Whitelist.")
+      setNetworkMessage("Enter your name and email below to get on the Whitelist")
     } 
     if(networkId === 5777) {
       setNetworkMessage(`You are connected to your localhost network.  Log in to the Etherium Mainnet to access the Whitelist.`)
@@ -73,19 +73,36 @@ export default function Whitelist() {
           { !account ? (
             <div style={{fontStyle: 'normal', padding: '2vh 0', margin: '0', fontWeight: '200', fontSize: '.8rem', color: 'black'}}>Sign in to your wallet to get access to the PreSale Whitelist</div>
           ) : account ? (
-            <>
-            <div style={{fontStyle: 'normal', padding: '0', margin: '0', fontWeight: '200', fontSize: '.8rem', textAlign: 'center', color: 'white', marginTop: '2vh'}}>{ networkMessage }</div>
+            <div className='whitelist'>
+            <div style={{fontStyle: 'normal', padding: '0', margin: '0', fontWeight: '200', fontSize: '.8rem', textAlign: 'center', color: '#fff', margin: '2vh'}}>{ networkMessage }</div>
             { account && networkId === 1 ? (
+              <div style={{display: "flex", flexDirection: "column", minWidth: '30vw'}}>
+              <input type="text" placeholder="NAME*" required style={{padding: '1vh 1vw', margin: '.5vh 0'}}/>
+              <input type="text" placeholder="EMAIL*" required style={{padding: '1vh 1vw', margin: '.5vh 0'}}/>
+              <input type="text" placeholder={`${account}`} required readonly style={{padding: '1vh 1vw', margin: '.5vh 0', textAlign: 'center'}}/>
               <button 
-              className="bannerBtn" 
               type='submit' 
               // onClick={
                 // joinWhiteList
               // } 
-                disabled={disabled} style={{padding: '0', margin: '0', border: 'none', backgroundColor: 'transparent', cursor: `${cursor}`, height: 'auto'}}>Join</button>
+                disabled={disabled} 
+                style={{
+                  padding: '1rem', 
+                  color: "#fff", 
+                  margin: '.5vh 0 5vh', 
+                  border: 'none', 
+                  backgroundColor: "#E21C21", 
+                  cursor: `${cursor}`, 
+                  height: 'auto',
+                  width: '25%',
+                  alignSelf: 'end'
+                }}>
+                  WHITELIST
+                  </button>
+                  </div>
             ) : (null)}
             
-            </>
+            </div>
           ) : (null)}
     </>
   )

@@ -145,7 +145,7 @@ setQuantity(e){
             <div>Log in to your ethereum wallet to access Minting</div>
             ) : this.state.currentSupply === 0 ? (
             <>
-            <div>Bond Acct: { shortAcct } </div>
+            {/* <div>Bond Acct: { shortAcct } </div> */}
               {/* <div> You own zero NFTs.</div>
               <select name="count" id="count" onChange={this.setQuantity.bind(this)} value={this.value}>
                   <option value="1">1</option>
@@ -163,7 +163,7 @@ setQuantity(e){
             </>
             ) : this.state.currentSupply === 1 ? (
               <>
-              <div>Bond Acct: { shortAcct } </div>
+              {/* <div>Bond Acct: { shortAcct } </div> */}
               {/* <h3> You own {this.state.currentSupply} NFT</h3>
               <select name="count" id="count" onChange={this.setQuantity.bind(this)} value={this.value}>
                   <option value="1">1</option>
@@ -183,7 +183,7 @@ setQuantity(e){
               </>
             ) : (
               <>
-              <div>Bond Acct: { shortAcct } </div>
+              {/* <div>Bond Acct: { shortAcct } </div> */}
               {/* <h5> You own {this.state.currentSupply} NFTs</h5>
               <select name="count" id="count" onChange={this.setQuantity.bind(this)} value={this.value}>
                   <option value="1">1</option>
