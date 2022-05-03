@@ -1,109 +1,75 @@
-import React, { useState, useContext, useEffect } from 'react';
-import Context from '../context';
-import Mint from '../components/Mint';
+import React, { useState, useEffect } from 'react'
 
-export default function Whitelist() {
-  let { account } = useContext(Context);
-  let [disabled, ] = useState(false);
-  //let [btnText, setBtnText] = useState('Click to Join the Whitelist');
-  let [networkMessage, setNetworkMessage] = useState();
-  let [cursor, ] = useState('pointer');
-  const { networkId } = useContext(Context);
-  // const shortAcct=(String(account).substring(0,4) + "..." + String(account).substring(39) );
-  
+const Whitelist = ({account, networkID, shortAcct}) => {
 
-  let headers = new Headers();
+    const [networkMessage, setNetworkMessage] = useState();
+    const [cursor, setCursor] = useState("pointer")
+    const [disabled, setDisabled] = useState(true)
+    const [btnText, setBtnText] = useState("APPLY FOR WHITELIST")
 
-  headers.append("Access-Control-Allow-Origin", "*");
-  headers.append('Origin','http://localhost:3000');
+    useEffect(() => {
+        if(networkID === 1 ) {
+          setNetworkMessage("Enter your name and email below to get on the Whitelist")
+        } 
+        if(networkID === 5777) {
+          setNetworkMessage(`You are connected to your localhost network.  Log in to the Etherium Mainnet to access the Whitelist.`)
+        } 
+        if(networkID === 3 ) {
+          setNetworkMessage("You are connected to the Ropsten Test Network.  Log in to the Etherium Mainnet to access the Whitelist.")
+        } 
+        if(networkID === 42 ) {
+          setNetworkMessage("You are connected to the Kovan Test Network.  Log in to the Etherium Mainnet to access the Whitelist.")
+        } 
+        if(networkID === 4 ) {
+          setNetworkMessage(`You are connected to the Rinkeby Test Network. Log in to the Etherium Mainnet to access the Whitelist.`)
+        } 
+        if(networkID === 5 ) {
+          setNetworkMessage("You are connected to the Goerli Test Network.  Log in to the Etherium Mainnet to access the Whitelist.")
+        } 
+        if(networkID === 1666600000 ) {
+          setNetworkMessage("You are connected to the Harmony One Network.  Log in to the Etherium Mainnet to access the Whitelist.")
+        } 
+        if(networkID === "undefined" ) {
+          setNetworkMessage("Log in to the Etherium Mainnet to access the Whitelist.")
+        } 
+      }, [networkID]);
 
-  // async function joinWhiteList() {
-    // setBtnText(`Adding ${shortAcct} to the Whitelist`)
-  //   const data = {
-  //     body: { 
-  //       acct_num: String(account) 
-  //     }
-  //   };
-  //   // console.log(data)
-  //   await API.post('whitelistAPI', '/whitelist', data)
-  //   .then(res => {
-  //     // setBtnText(`Agent ${shortAcct} has been Whitelisted`);
-  //     setDisabled(true);
-  //     setCursor('no-drop')
-  //     setNetworkMessage('')
-  //   })
-  //   .catch(error => {
-  //     console.log(error)
-  //     // setBtnText('Something went wrong. Try Again.')
-  //   })
-  // }
 
-  useEffect(() => {
-    if(networkId === 1 ) {
-      setNetworkMessage("Enter your name and email below to get on the Whitelist")
-    } 
-    if(networkId === 5777) {
-      setNetworkMessage(`You are connected to your localhost network.  Log in to the Etherium Mainnet to access the Whitelist.`)
-    } 
-    if(networkId === 3 ) {
-      setNetworkMessage("You are connected to the Ropsten Test Network.  Log in to the Etherium Mainnet to access the Whitelist.")
-    } 
-    if(networkId === 42 ) {
-      setNetworkMessage("You are connected to the Kovan Test Network.  Log in to the Etherium Mainnet to access the Whitelist.")
-    } 
-    if(networkId === 4 ) {
-      setNetworkMessage(`You are connected to the Rinkeby Test Network. Log in to the Etherium Mainnet to access the Whitelist.`)
-    } 
-    if(networkId === 5 ) {
-      setNetworkMessage("You are connected to the Goerli Test Network.  Log in to the Etherium Mainnet to access the Whitelist.")
-    } 
-    if(networkId === 1666600000 ) {
-      setNetworkMessage("You are connected to the Harmony One Network.  Log in to the Etherium Mainnet to access the Whitelist.")
-    } 
-    if(networkId === "undefined" ) {
-      setNetworkMessage("Log in to the Etherium Mainnet to access the Whitelist.")
-    } 
-  }, [networkId]);
-
+      function joinWhitelist() {
+        console.log("button clicked")
+        setCursor("no-drop")
+        setDisabled(true)
+        console.log(cursor)
+        console.log(disabled)
+        setBtnText("Submission Sent")
+      }
 
   return (
-    <>
-        {/* <Network /> */}
-        <Mint />
-          { !account ? (
-            <div style={{fontStyle: 'normal', padding: '2vh 0', margin: '0', fontWeight: '200', fontSize: '.8rem', color: 'black'}}>Sign in to your wallet to get access to the PreSale Whitelist</div>
+    <div className='whitelist'>
+        { !account ? (
+            <div className="message">Sign in to your wallet to get access to the PreSale Whitelist</div>
           ) : account ? (
-            <div className='whitelist'>
-            <div style={{fontStyle: 'normal', padding: '0', margin: '0', fontWeight: '200', fontSize: '.8rem', textAlign: 'center', color: '#fff', margin: '2vh'}}>{ networkMessage }</div>
-            { account && networkId === 1 ? (
-              <div style={{display: "flex", flexDirection: "column", minWidth: '30vw'}}>
-              <input type="text" placeholder="NAME*" required style={{padding: '1vh 1vw', margin: '.5vh 0'}}/>
-              <input type="text" placeholder="EMAIL*" required style={{padding: '1vh 1vw', margin: '.5vh 0'}}/>
-              <input type="text" placeholder={`${account}`} required readonly style={{padding: '1vh 1vw', margin: '.5vh 0', textAlign: 'center'}}/>
-              <button 
-              type='submit' 
-              // onClick={
-                // joinWhiteList
-              // } 
-                disabled={disabled} 
-                style={{
-                  padding: '1rem', 
-                  color: "#fff", 
-                  margin: '.5vh 0 5vh', 
-                  border: 'none', 
-                  backgroundColor: "#E21C21", 
-                  cursor: `${cursor}`, 
-                  height: 'auto',
-                  width: '25%',
-                  alignSelf: 'end'
-                }}>
-                  WHITELIST
-                  </button>
-                  </div>
+            <div>
+            <div className='message'>{ networkMessage }</div>
+            { account && networkID === 1 ? (
+              <div className="form">
+                <input type="text" placeholder="NAME >>> John Smith" required />
+                <input type="email" placeholder="EMAIL >>> johnsmith@gmail.com" required />
+                <input type="text" placeholder="DISCORD >>> johnny#0357" required />
+                <input type="text" className="account" placeholder={`${shortAcct}`} required readonly />
+                <button 
+                  onClick={joinWhitelist} 
+                  type='submit' 
+                  disabled={disabled} 
+                  style={{cursor: `${cursor}`}}>
+                    {btnText}
+                </button>
+              </div>
             ) : (null)}
-            
             </div>
           ) : (null)}
-    </>
+    </div>
   )
 }
+
+export default Whitelist

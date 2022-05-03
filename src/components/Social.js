@@ -1,5 +1,5 @@
 import React from 'react'
-import { SocialIcon } from 'react-social-icons'
+import { FaInstagram, FaTwitter, FaSpotify } from 'react-icons/fa'
 
 const Social = () => {
   return (
@@ -8,7 +8,7 @@ const Social = () => {
         <a href='https://www.marcebassy.com/about' target="_blank" rel="noreferrer noopener">
           <span className="spin">ABOUT</span>
         </a>
-        <a  href= '#' target="_blank" rel="noreferrer noopener">
+        <a  href= '/' target="_blank" rel="noreferrer noopener">
           <span className="spin">ROADMAP</span>
         </a>
         <a href='https://discord.gg/hUmjvUDF' target="_blank" rel="noreferrer noopener">
@@ -16,16 +16,14 @@ const Social = () => {
         </a>
       </div>
       <div className="socialIcons">
-        <a href='#' target="_blank" rel="noreferrer noopener">
-         <SocialIcon bgColor="transparent" fgColor="white" url="https://www.instagram.com/marcebassy/?hl=en" className="icon"/>
+        <a href='https://www.instagram.com/marcebassy/?hl=en' target="_blank" rel="noreferrer noopener">
+         <FaInstagram className="icon"/>
         </a>
-        
-        <a  href= '#' target="_blank" rel="noreferrer noopener">
-          <SocialIcon bgColor="transparent" fgColor="white" url="https://twitter.com/marcebassy" className="icon"/>
+        <a  href= 'https://twitter.com/marcebassy' target="_blank" rel="noreferrer noopener">
+          <FaTwitter className="icon"/>
         </a>
-        
-        <a href='#' target="_blank" rel="noreferrer noopener">
-          <SocialIcon bgColor="transparent" fgColor="white" url="https://open.spotify.com/artist/3tQx1LPXbsYjE9VwN1Peaa?autoplay=true&v=A" className="icon"/>
+        <a href='https://open.spotify.com/artist/3tQx1LPXbsYjE9VwN1Peaa?autoplay=true&v=A' target="_blank" rel="noreferrer noopener">
+          <FaSpotify className="icon"/>
         </a>
       </div>
     </div>

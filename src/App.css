@@ -1,5 +1,8 @@
 body {
   background-color: #202124;
+  background-image: url('./images/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
   color: white;
   min-height: 100vh;
   min-width: 100vw;
@@ -9,6 +12,8 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   text-align: center;
+  overflow-y: hidden; /* Hide vertical scrollbar */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 .App {
@@ -17,25 +22,96 @@ body {
   display: grid;
 }
 
+.swimLogo {
+  width: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 2vh;
+}
+
+.bassyLogo {
+  justify-self: center;
+  align-self: center;
+  height: 30vh;
+  margin: 10vh 0 3vh 0;
+}
+
 .whitelist {
   display: grid;
   justify-content: center;
-  align-content: end;
-  height: 70vh;
+  height: 80h;
+}
+
+.message {
+ margin-top: 5vh;
+ font-size: 1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  min-width: 29vw;
+  height: auto;
+}
+
+input {
+  padding: 3% 1%;
+  margin: .5vh 0;
+  text-align: center;
+}
+
+input::placeholder {
+  color: rgb(159, 158, 158);
+}
+
+.account::placeholder {
+  color: lightgrey;
+  cursor: not-allowed;
+  outline: none;
+}
+
+.account:active,
+.account:hover {
+  cursor: not-allowed;
+  outline: none;
+}
+
+button {
+  padding: 1rem;
+  color: #fff;
+  margin: .5vh 0;
+  border: none;
+  background-color: #E21C21;
+  height: auto;
+  width: auto;
+  align-self: end;
+}
+
+button:hover {
+  /* color: #E21C21; */
+  background-color: transparent;
+  border: 1px solid #E21C21;
+}
+
+button:active {
+  font-size: .8rem;
+  background-color: #E21C21;
 }
 
 .social {
+  position: absolute;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100vw;
-  height: 30vh;
+  height: 10vh;
 }
 
 .socialButtons {
   display: flex;
   justify-content: center;
-  width: 30vw;
   margin: 0 auto;
   align-content: center;
 }
@@ -43,7 +119,7 @@ body {
 .socialButtons a {
   padding: .9rem 2rem;
   border: 1px solid #E21C21;
-  background-color: transparent;
+  background-color: #E21C21;
   color: #fff;
   font-size: 1rem;
   cursor: pointer;
@@ -51,6 +127,7 @@ body {
   margin: 0 2vw;
   align-self: center;
   justify-self: center;
+  width: auto;
 }
 
 .socialIcons {
@@ -58,21 +135,22 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 3vh;
-  padding: 0;
+  margin: 3vh 0 0 0;
+  padding: 0 0 2vh 0;
   width: 100vw;
   justify-self: center;
 }
 
 
 .socialIcons a .icon {
-  color: transparent;
+  color: white;
   border-radius: 50%;
   margin: 0 1vw;
+  padding: .25em;
 }
 
 .socialIcons a:hover .icon {
-  background-color: red;
+  background-color: #E21C21;
   border-radius: 50%;
   margin: 0 1vw;
 }
