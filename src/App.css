@@ -55,6 +55,11 @@ body {
   height: auto;
 }
 
+.fGroup {
+  display: flex;
+  flex-direction: column;
+}
+
 input {
   padding: 3% 1%;
   margin: .5vh 0;
@@ -77,18 +82,25 @@ input::placeholder {
   outline: none;
 }
 
-button {
+.endForm {
+  display: flex;
+}
+
+iframe {
+  width: 100%;
+  float: left;
+}
+
+.submitBtn {
   padding: 1rem;
   color: #fff;
   margin: .5vh 0;
   border: none;
-  background-color: #E21C21;
-  height: auto;
-  width: auto;
+  width: 100%;
   align-self: end;
 }
 
-button:hover {
+.submitBtn:hover {
   /* color: #E21C21; */
   background-color: transparent;
   border: 1px solid #E21C21;

@@ -56,10 +56,6 @@ function App() {
 
   }, [account, networkID])
 
-
-
-
-
   return (
     <div className="App">
       <header className="App-header">
