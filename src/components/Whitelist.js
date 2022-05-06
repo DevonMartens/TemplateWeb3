@@ -20,7 +20,7 @@ const Whitelist = ({account, networkID}) => {
  
     const url = process.env.REACT_APP_WHITELIST
     const geolocation_key = process.env.REACT_APP_KEY
-    const recaptcha = process.env.REACT_APP_RECAPTCHA_KEY
+    const recaptcha = process.env.REACT_APP_RECAPTCHA
 
     useEffect(() => {
       const getLocation = () => {
