@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Form, Button } from 'react-bootstrap'
 import ReCAPTCHA from "react-google-recaptcha";
 
-const Whitelist = ({account, networkID, shortAcct}) => {
+const Whitelist = ({account, networkID}) => {
     const form = useRef()
 
     const [networkMessage, setNetworkMessage] = useState();
