@@ -20,7 +20,7 @@ const Whitelist = ({account, networkID}) => {
  
     const url = process.env.REACT_APP_WHITELIST
     const geolocation_key = process.env.REACT_APP_KEY
-    const recaptcha = process.env.REACT_APP_RECAPTCHA
+    const recaptcha_key = process.env.REACT_APP_RECAPTCHA
 
     useEffect(() => {
       const getLocation = () => {
@@ -120,7 +120,7 @@ const Whitelist = ({account, networkID}) => {
                 </Form.Group>
                 <Form.Group className="endForm">
                 <ReCAPTCHA
-                  sitekey={recaptcha}
+                  sitekey={recaptcha_key}
                   onChange={onChange}
                   />
                 <Button
