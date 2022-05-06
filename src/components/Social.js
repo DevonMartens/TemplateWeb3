@@ -4,7 +4,7 @@ import { FaInstagram, FaTwitter, FaSpotify } from 'react-icons/fa'
 const Social = () => {
   return (
     <div className='social'>
-      <div className="socialButtons">
+      <div className="socialBtns">
         <a href='https://www.marcebassy.com/about' target="_blank" rel="noreferrer noopener">
           <span className="spin">ABOUT</span>
         </a>

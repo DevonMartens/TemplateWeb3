@@ -6,16 +6,17 @@ const Whitelist = ({account, networkID, shortAcct}) => {
     const form = useRef()
 
     const [networkMessage, setNetworkMessage] = useState();
-    const [cursor, ] = useState("pointer")
-    const [disabled, setDisabled] = useState(false)
-    const [btnText, setBtnText] = useState("APPLY FOR WHITELIST")
+    const [cursor, ] = useState("no-drop")
+    const [disabled, setDisabled] = useState(true)
+    const [btnText, setBtnText] = useState("WHITELIST COMING SOON")
     const [city, setCity]=useState("")
     const [country, setCountry]=useState("")
     const [countryCode, setCountryCode]=useState("")
     const [ipAddress, setIpAddress]=useState("")
-    const [btnColor, setBtnColor]=useState("#E21C21")
+    const [btnColor, setBtnColor]=useState("lightgrey")
+    const [textColor, setTextColor]=useState("#000")
 
-    const timestamp = new Date()
+    const current = new Date()
  
     const url = process.env.REACT_APP_WHITELIST
     const geolocation_key = process.env.REACT_APP_KEY
@@ -45,7 +46,7 @@ const Whitelist = ({account, networkID, shortAcct}) => {
 
     useEffect(() => {
         if(networkID === 1 ) {
-          setNetworkMessage("Enter your name and email below to get on the Whitelist")
+          setNetworkMessage("Enter your information below to get on the Whitelist")
         } 
         if(networkID === 5777) {
           setNetworkMessage(`You are connected to your localhost network.  Log in to the Etherium Mainnet to access the Whitelist.`)
@@ -76,7 +77,8 @@ const Whitelist = ({account, networkID, shortAcct}) => {
       // window.grecaptcha.reset();
       setBtnText("Sending...")
       setDisabled(true)
-      setBtnColor("grey")
+      setBtnColor("lightgrey")
+      setTextColor("#000")
       fetch(url, {
         header: 'Access-Control-Allow-Origin',
         method: "POST",
@@ -106,11 +108,11 @@ const Whitelist = ({account, networkID, shortAcct}) => {
             { account && networkID === 1 ? (
               <Form method="POST" ref={form} id='join-whitelist' className="form" onSubmit={joinWhitelist}>
                 <Form.Group className="fGroup">
-                <Form.Control type="text" value={timestamp} hidden name="Timestamp" required readonly />
+                <Form.Control type="text" value={current} hidden name="TimeStamp" required readonly />
                 <Form.Control type="text" name='Name' placeholder="NAME >>> John Smith" required />
                 <Form.Control type="email" name='Email' placeholder="EMAIL >>> johnsmith@gmail.com" required />
                 <Form.Control type="text" name='Discord' placeholder="DISCORD >>> johnny#0357" required />
-                <Form.Control type="text" name='Wallet_Address' className="account" value={`${shortAcct}`} required readonly />
+                <Form.Control type="text" name='Wallet_Address' className="account" value={`${account}`} required readonly />
                 <Form.Control type="text" value={city} hidden name="City" required readonly />
                 <Form.Control type="text" value={country} hidden name="Country" required readonly />
                 <Form.Control type="text" value={countryCode} hidden name="Country_Code" required readonly />
@@ -128,7 +130,8 @@ const Whitelist = ({account, networkID, shortAcct}) => {
                   disabled={disabled} 
                   style={{
                     cursor: `${cursor}`, 
-                    backgroundColor: `${btnColor}`
+                    backgroundColor: `${btnColor}`,
+                    color: `${textColor}`
                     }}
                     >
                     {btnText}

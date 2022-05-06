@@ -6,6 +6,7 @@ body {
   color: white;
   min-height: 100vh;
   min-width: 100vw;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,15 +45,15 @@ body {
 }
 
 .message {
- margin-top: 5vh;
+ margin: 5vh 0 1vh;
  font-size: 1rem;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  min-width: 29vw;
   height: auto;
+  min-width: 300px;
 }
 
 .fGroup {
@@ -64,6 +65,12 @@ input {
   padding: 3% 1%;
   margin: .5vh 0;
   text-align: center;
+  border-radius: 5px;
+  outline: none;
+}
+
+input:active {
+  outline: none;
 }
 
 input::placeholder {
@@ -87,26 +94,23 @@ input::placeholder {
 }
 
 iframe {
-  width: 100%;
+  flex-grow: 1;
   float: left;
 }
 
 .submitBtn {
-  padding: 1rem;
-  color: #fff;
-  margin: .5vh 0;
   border: none;
   width: 100%;
-  align-self: end;
+  height: 76px;
+  border-radius: 5px;
+  flex-grow: 1;
 }
 
 .submitBtn:hover {
-  /* color: #E21C21; */
   background-color: transparent;
-  border: 1px solid #E21C21;
 }
 
-button:active {
+.submitBtn:active {
   font-size: .8rem;
   background-color: #E21C21;
 }
@@ -116,41 +120,38 @@ button:active {
   bottom: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   width: 100vw;
-  height: 10vh;
+  height: 12vh;
+  align-content: center;
 }
 
 .socialButtons {
   display: flex;
   justify-content: center;
-  margin: 0 auto;
-  align-content: center;
 }
 
-.socialButtons a {
-  padding: .9rem 2rem;
+.socialBtns a {
+  padding: .9rem 1.5rem;
   border: 1px solid #E21C21;
-  background-color: #E21C21;
+  border-radius: 5px;
   color: #fff;
   font-size: 1rem;
   cursor: pointer;
   text-decoration: none;
-  margin: 0 2vw;
-  align-self: center;
-  justify-self: center;
+  margin: 0 1vw;
   width: auto;
+}
+
+.socialBtns a:hover {
+  background-color: #E21C21;
 }
 
 .socialIcons {
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
   margin: 3vh 0 0 0;
   padding: 0 0 2vh 0;
   width: 100vw;
-  justify-self: center;
 }
 
 
