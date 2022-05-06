@@ -117,12 +117,11 @@ iframe {
 }
 
 .social {
-  /* position: absolute; */
-  /* bottom: 0; */
   display: flex;
   flex-direction: column;
   width: 100vw;
   height: 12vh;
+  margin-top: 3vh;
   align-content: center;
 }
 
