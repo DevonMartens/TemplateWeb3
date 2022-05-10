@@ -20,7 +20,7 @@ const Whitelist = ({account, networkID}) => {
  
     const url = process.env.REACT_APP_WHITELIST
     const geolocation_key = process.env.REACT_APP_KEY
-    const recaptcha_key = process.env.REACT_APP_RECAPTCHA
+    const recaptcha_key = process.env.REACT_APP_RECAPTCHA_KEY
 
     useEffect(() => {
       const getLocation = () => {
@@ -108,20 +108,21 @@ const Whitelist = ({account, networkID}) => {
             { account && networkID === 1 ? (
               <Form method="POST" ref={form} id='join-whitelist' className="form" onSubmit={joinWhitelist}>
                 <Form.Group className="fGroup">
-                <Form.Control type="text" value={current} hidden name="TimeStamp" required readonly />
+                <Form.Control type="text" value={current} hidden name="TimeStamp" required readOnly />
                 <Form.Control type="text" name='Name' placeholder="NAME >>> John Smith" required />
                 <Form.Control type="email" name='Email' placeholder="EMAIL >>> johnsmith@gmail.com" required />
                 <Form.Control type="text" name='Discord' placeholder="DISCORD >>> johnny#0357" required />
-                <Form.Control type="text" name='Wallet_Address' className="account" value={`${account}`} required readonly />
-                <Form.Control type="text" value={city} hidden name="City" required readonly />
-                <Form.Control type="text" value={country} hidden name="Country" required readonly />
-                <Form.Control type="text" value={countryCode} hidden name="Country_Code" required readonly />
-                <Form.Control type="text" value={ipAddress} hidden name="IP_Address" required readonly />
+                <Form.Control type="text" name='Wallet_Address' className="account" value={`${account}`} required readOnly />
+                <Form.Control type="text" value={city} hidden name="City" required readOnly />
+                <Form.Control type="text" value={country} hidden name="Country" required readOnly />
+                <Form.Control type="text" value={countryCode} hidden name="Country_Code" required readOnly />
+                <Form.Control type="text" value={ipAddress} hidden name="IP_Address" required readOnly />
                 </Form.Group>
                 <Form.Group className="endForm">
                 <ReCAPTCHA
-                  sitekey={recaptcha_key}
+                  sitekey={`${recaptcha_key}`}
                   onChange={onChange}
+                  className="recaptcha"
                   />
                 <Button
                   className="submitBtn" 

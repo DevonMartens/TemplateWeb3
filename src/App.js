@@ -58,12 +58,10 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={SwimLogo} alt="Swim Logo" className="swimLogo"/>
-        <img src={Signature} alt="Bassy's Signature" className="bassyLogo"/>
-        <Whitelist account={account} networkID={networkID} shortAcct={shortAcct}/>
-        <Social />
-      </header>
+      <img src={SwimLogo} alt="Swim Logo" className="swimLogo"/>
+      <img src={Signature} alt="Bassy's Signature" className="bassyLogo"/>
+      <Whitelist account={account} networkID={networkID} shortAcct={shortAcct}/>
+      <Social />
     </div>
   );
 }

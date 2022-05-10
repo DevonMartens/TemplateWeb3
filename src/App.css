@@ -13,18 +13,23 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   text-align: center;
-  padding: 0 3vw;
+  padding: 0;
   overflow-y: hidden; /* Hide vertical scrollbar */
   overflow-x: hidden; /* Hide horizontal scrollbar */
 }
 
 .App {
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
   display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+  grid-gap: 1em;
 }
 
 .swimLogo {
+  grid-column: 8/9;
+  grid-row: 1/2;
   width: 200px;
   position: absolute;
   top: 0;
@@ -33,16 +38,19 @@ body {
 }
 
 .bassyLogo {
-  justify-self: center;
-  align-self: center;
-  height: 30vh;
-  margin: 10vh 0 3vh 0;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  transition: all 2s;
+  max-width: 95vw;
 }
 
 .whitelist {
-  display: grid;
-  justify-content: center;
-  height: 80h;
+  grid-column: 4/6;
+  grid-row: 4/8;
+  justify-self: center;
 }
 
 .message {
@@ -63,8 +71,9 @@ body {
 }
 
 input {
-  padding: 3% 1%;
-  margin: .5vh 0;
+  width: 98%;
+  padding: 3% 0;
+  margin: .5vh 1%;
   text-align: center;
   border-radius: 5px;
   outline: none;
@@ -91,20 +100,19 @@ input::placeholder {
 }
 
 .endForm {
+  margin: .5vh 1% 1% 1%;
   display: flex;
 }
 
-iframe {
-  flex-grow: 1;
-  float: left;
-}
+/* .endForm .recaptcha { */
+  /* width: 50%;
+  margin-right: .5%; */
+/* } */
 
 .submitBtn {
   border: none;
-  width: 100%;
-  height: 76px;
   border-radius: 5px;
-  flex-grow: 1;
+  margin-bottom: .5%;
 }
 
 .submitBtn:hover {
@@ -117,17 +125,14 @@ iframe {
 }
 
 .social {
+  grid-column: 1/9;
+  grid-row: 8/9;
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 12vh;
-  margin-top: 3vh;
-  align-content: center;
 }
 
 .socialButtons {
   display: flex;
-  justify-content: center;
 }
 
 .socialBtns a {
@@ -149,9 +154,7 @@ iframe {
 .socialIcons {
   display: flex;
   justify-content: center;
-  margin: 3vh 0 0 0;
-  padding: 0 0 2vh 0;
-  width: 100vw;
+  margin-top: 2vh;
 }
 
 
@@ -168,3 +171,8 @@ iframe {
   margin: 0 1vw;
 }
 
+@media (max-width: 2000px) {
+  .bassyLogo {
+    /* grid-column: 3/7; */
+  }
+}
