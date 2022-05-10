@@ -3,17 +3,19 @@
 import { useState, useEffect } from 'react'
 import Web3 from 'web3'
 import './App.css'
-import Social from './components/Social'
-import Whitelist from './components/Whitelist'
 import SwimLogo from './images/swim-logo.png'
 import Signature from './images/signature.png'
+import Mint from './components/Mint'
+// import Whitelist from './components/Whitelist'
+import Social from './components/Social'
 
 
 function App() {
 
   const [account, setAccount] = useState()
-  const [shortAcct, setShortAccount] = useState()
+  const [, setShortAccount] = useState()
   const [networkID, setNetworkID] = useState()
+
 
 
   const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545')
@@ -60,7 +62,8 @@ function App() {
     <div className="App">
       <img src={SwimLogo} alt="Swim Logo" className="swimLogo"/>
       <img src={Signature} alt="Bassy's Signature" className="bassyLogo"/>
-      <Whitelist account={account} networkID={networkID} shortAcct={shortAcct}/>
+      <Mint account={account} networkID={networkID} web3={web3}/>
+      {/* <Whitelist account={account} networkID={networkID} shortAcct={shortAcct}/> */}
       <Social />
     </div>
   );

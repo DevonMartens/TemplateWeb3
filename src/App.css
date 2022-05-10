@@ -47,7 +47,8 @@ body {
   max-width: 95vw;
 }
 
-.whitelist {
+.whitelist,
+.mint {
   grid-column: 4/6;
   grid-row: 4/8;
   justify-self: center;
