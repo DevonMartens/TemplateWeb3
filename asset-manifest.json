@@ -1,23 +1,16 @@
 {
   "files": {
-    "main.css": "/MEB/static/css/main.f6e1d5d8.chunk.css",
-    "main.js": "/MEB/static/js/main.af405e50.chunk.js",
-    "main.js.map": "/MEB/static/js/main.af405e50.chunk.js.map",
-    "runtime-main.js": "/MEB/static/js/runtime-main.64dba1e9.js",
-    "runtime-main.js.map": "/MEB/static/js/runtime-main.64dba1e9.js.map",
-    "static/js/2.f4c2ea13.chunk.js": "/MEB/static/js/2.f4c2ea13.chunk.js",
-    "static/js/2.f4c2ea13.chunk.js.map": "/MEB/static/js/2.f4c2ea13.chunk.js.map",
+    "main.css": "/MEB/static/css/main.5516a0dc.css",
+    "main.js": "/MEB/static/js/main.69b5f27e.js",
+    "static/media/background.png": "/MEB/static/media/background.302f1884ed489ed24572.png",
+    "static/media/swim-logo.png": "/MEB/static/media/swim-logo.3f31c13feb82a10c6d27.png",
+    "static/media/signature.png": "/MEB/static/media/signature.211bae145392f3bfc37b.png",
     "index.html": "/MEB/index.html",
-    "static/css/main.f6e1d5d8.chunk.css.map": "/MEB/static/css/main.f6e1d5d8.chunk.css.map",
-    "static/js/2.f4c2ea13.chunk.js.LICENSE.txt": "/MEB/static/js/2.f4c2ea13.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/MEB/static/media/background.302f1884.png",
-    "static/media/signature.211bae14.png": "/MEB/static/media/signature.211bae14.png",
-    "static/media/swim-logo.3f31c13f.png": "/MEB/static/media/swim-logo.3f31c13f.png"
+    "main.5516a0dc.css.map": "/MEB/static/css/main.5516a0dc.css.map",
+    "main.69b5f27e.js.map": "/MEB/static/js/main.69b5f27e.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.64dba1e9.js",
-    "static/js/2.f4c2ea13.chunk.js",
-    "static/css/main.f6e1d5d8.chunk.css",
-    "static/js/main.af405e50.chunk.js"
+    "static/css/main.5516a0dc.css",
+    "static/js/main.69b5f27e.js"
   ]
 }
