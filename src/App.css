@@ -27,6 +27,8 @@ body {
   grid-gap: 1em;
 }
 
+/* ***************** LOGOS ***************** */
+
 .swimLogo {
   grid-column: 8/9;
   grid-row: 1/2;
@@ -47,31 +49,31 @@ body {
   max-width: 95vw;
 }
 
-.whitelist,
-.mint {
+/* ***************** WHITELIST PAGE ***************** */
+.whitelist {
   grid-column: 4/6;
   grid-row: 4/8;
   justify-self: center;
 }
 
-.message {
+.whitelist .message {
  margin: 5vh 0 1vh;
  font-size: 1rem;
 }
 
-.form {
+.whitelist .form {
   display: flex;
   flex-direction: column;
   height: auto;
   min-width: 300px;
 }
 
-.fGroup {
+.whitelist .fGroup {
   display: flex;
   flex-direction: column;
 }
 
-input {
+.whitelist input {
   width: 98%;
   padding: 3% 0;
   margin: .5vh 1%;
@@ -80,63 +82,91 @@ input {
   outline: none;
 }
 
-input:active {
+.whitelist input:active {
   outline: none;
 }
 
-input::placeholder {
+.whitelist input::placeholder {
   color: rgb(159, 158, 158);
 }
 
-.account::placeholder {
+.whitelist .account::placeholder {
   color: lightgrey;
   cursor: not-allowed;
   outline: none;
 }
 
-.account:active,
-.account:hover {
+.whitelist .account:active,
+.whitelist .account:hover {
   cursor: not-allowed;
   outline: none;
 }
 
-.endForm {
+.whitelist .endForm {
   margin: .5vh 1% 1% 1%;
   display: flex;
 }
 
-/* .endForm .recaptcha { */
-  /* width: 50%;
-  margin-right: .5%; */
-/* } */
-
-.submitBtn {
+.whitelist .submitBtn {
   border: none;
   border-radius: 5px;
   margin-bottom: .5%;
 }
 
-.submitBtn:hover {
+.whitelist .submitBtn:hover {
   background-color: transparent;
 }
 
-.submitBtn:active {
+.whitelist .submitBtn:active {
   font-size: .8rem;
   background-color: #E21C21;
 }
 
+/* ***************** MINT PAGE ***************** */
+
+.mint {
+  grid-row: 4/8;
+  width: 100%;
+  justify-self: center;
+  transition: all 2s;
+}
+
+.card {
+  background: transparent !important;
+  color: white;
+}
+
+.mint input {
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  opacity: 1;
+}
+
+.mintBtn {
+  background-color: #E21C21 !important;
+  border: none !important;
+}
+
+.mintBtn:focus,
+.mintBtn:active {
+  border: none !important;
+  outline: none !important;
+}
+
+/* ***************** FOOTER ***************** */
+
 .social {
+  display: grid;
   grid-column: 1/9;
   grid-row: 8/9;
-  display: flex;
-  flex-direction: column;
+  justify-items: center;
 }
 
-.socialButtons {
-  display: flex;
-}
-
-.socialBtns a {
+.social .socialBtns a {
   padding: .9rem 1.5rem;
   border: 1px solid #E21C21;
   border-radius: 5px;
@@ -172,8 +202,12 @@ input::placeholder {
   margin: 0 1vw;
 }
 
+
+/* ***************** MEDIA QUERIES ***************** */
+
 @media (max-width: 2000px) {
-  .bassyLogo {
-    /* grid-column: 3/7; */
+  .mint {
+    grid-column: 1/9;
   }
+  
 }

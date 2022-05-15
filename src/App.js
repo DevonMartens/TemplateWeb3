@@ -13,10 +13,8 @@ import Social from './components/Social'
 function App() {
 
   const [account, setAccount] = useState()
-  const [, setShortAccount] = useState()
+  const [shortAcct, setShortAcct] = useState()
   const [networkID, setNetworkID] = useState()
-
-
 
   const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545')
 
@@ -25,7 +23,7 @@ function App() {
     const accounts = await web3.eth.requestAccounts();
     setAccount(String(accounts[0]))
   
-    setShortAccount(String(accounts[0].substring(0,3) + "..." + accounts[0].substring(38)))
+    setShortAcct(String(accounts[0].substring(0,3) + "..." + accounts[0].substring(38)))
   }
 
   async function loadNetwork() {
@@ -41,6 +39,7 @@ function App() {
   }, [])
 
   useEffect(()=> {
+
     const changeInChainListener = async () => {
 
     await window.ethereum.on('accountsChanged', function(account) {
@@ -49,12 +48,12 @@ function App() {
     })
 
     await window.ethereum.on('networkChanged', function (networkID) {
-      setNetworkID(networkID)
+      setNetworkID(networkID);
       window.location.reload();
     })
   }
 
-  changeInChainListener()
+  changeInChainListener();
 
   }, [account, networkID])
 
@@ -62,7 +61,7 @@ function App() {
     <div className="App">
       <img src={SwimLogo} alt="Swim Logo" className="swimLogo"/>
       <img src={Signature} alt="Bassy's Signature" className="bassyLogo"/>
-      <Mint account={account} networkID={networkID} web3={web3}/>
+      <Mint account={account} networkID={networkID} web3={web3} shortAcct={shortAcct} />
       {/* <Whitelist account={account} networkID={networkID} shortAcct={shortAcct}/> */}
       <Social />
     </div>

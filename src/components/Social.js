@@ -1,5 +1,6 @@
 import React from 'react'
 import { FaInstagram, FaTwitter, FaSpotify } from 'react-icons/fa'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Social = () => {
   return (

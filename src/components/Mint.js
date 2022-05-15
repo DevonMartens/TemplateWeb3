@@ -1,43 +1,82 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import Mugstars from "../contract/mugstars.json"
 import Web3 from 'web3'
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-const Mint = ({account, networkID, web3}) => {
+const Mint = ({ account, networkID, web3, shortAcct }) => {
 
-    const [contract, setContract] = useState()
-    let [currentSupply, setCurrentSupply] = useState(0)
-    const [socketInstance, setSocketInstance] = useState()
+    const form = useRef()
+
+    // let [, setContract] = useState()
+    let [currentSupply, ] = useState(0)
+    const [qty, setQty] = useState(1)
+    const [nftPics, setNftPics] = useState([])
+
+    const mintNow = () => {
+        console.log(`Button clicked, account number ${account} wants to mint ${qty} NFT's`);     
+        setQty(1);
+    }
+
+    //provider
+    const web3socket = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:7545'));
+
+    const contract = new web3socket.eth.Contract(
+        Mugstars.abi,
+        '0x04bf4ea0560f06e0ef5663c2b0eff29c195553b2',
+    );
+
+    
+    const getImages = async () => {
+      
+        for (let i = 0; i < currentSupply; i++) {
+          const tokenId = await contract.methods.tokenOfOwner(account).call()
+          console.log(tokenId)
+      
+          let tokenMetadataURI = await contract.methods.tokenURI(tokenId).call();
+          console.log(tokenMetadataURI)
+      
+          if (tokenMetadataURI.startsWith("ipfs://")) {
+            tokenMetadataURI = `https://ipfs.io/ipfs/${tokenMetadataURI.split("ipfs://")[1]}`
+          }
+      
+          const tokenMetadata = await fetch(tokenMetadataURI).then(res => res.json())
+          let tokenURL = await tokenMetadata['image']
+          setNftPics(tokenURL)
+          console.log(tokenURL)
+        }
+    }
 
     useEffect(() => {
-        const getInfo = async () => {
-            const this_contract = new web3.eth.Contract(
-                Mugstars.abi,
-                '0x04bf4ea0560f06e0ef5663c2b0eff29c195553b2',
-            )
-    
-            setContract(this_contract)
-    
-        const web3socket = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:7545'));
-    
-        const this_socket_instance = new web3socket.eth.Contract(
-            Mugstars.abi,
-            '0x04bf4ea0560f06e0ef5663c2b0eff29c195553b2',
-        )
-    
-        setSocketInstance(this_socket_instance)
-            const accounts = await web3.eth.getAccounts();
-
-            setCurrentSupply(parseInt(await contract.methods.balanceOf(accounts[0]).call({ from: accounts[0]})));
-        }
-        getInfo()
-
-}, [ contract.methods, web3.eth, currentSupply, socketInstance ])
+        getImages()
+    })
 
   return (
     <div className="mint"> 
-      <div>Current Supply: {currentSupply}</div> 
-       <div>Network ID: {networkID}</div>
-       <div>Account: {account}</div>
+       <div className="container col-xs-12">
+           <div className="row m-auto">
+               <form ref={form} action="submit" className="m-auto col-lg-5 col-md-8  col-lg-10w-100">
+                   <div className="card p-5 text-center" id="wallet-address">
+
+                        {/* <label className="m-2" htmlFor="amount">Please select the amount of NFTs to Mint</label> */}
+
+                        <div className="mintLine">
+                            <input className="py-1 ps-1 m-auto" type="number" name="amount"  value={qty} min="1" max="5" onInput={e => setQty(e.target.value)}/>
+                            <Button onClick={ mintNow } className="mintBtn "> Mint / Buy </Button>
+                        </div>
+
+                        <label htmlFor=""> 0.06 ETH each </label>
+
+                        <p className="mt-5"> Your Account Number: {shortAcct} </p>
+
+                        {nftPics.map((pic) => (
+                            <img src={pic} alt="nft"/>
+                        ))}
+
+                    </div>
+               </form>
+           </div>
+       </div>
     </div>
   )
 }
