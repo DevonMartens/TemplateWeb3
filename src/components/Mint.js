@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { ethers } from 'ethers'
 import Mugstars from "../contract/mugstars.json"
-import Web3 from 'web3'
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const Mint = ({ account, networkID, web3, shortAcct }) => {
+const Mint = ({ account, networkID, provider, shortAcct }) => {
 
     const form = useRef()
 
@@ -18,12 +18,10 @@ const Mint = ({ account, networkID, web3, shortAcct }) => {
         setQty(1);
     }
 
-    //provider
-    const web3socket = new Web3(new Web3.providers.WebsocketProvider('ws://localhost:7545'));
-
-    const contract = new web3socket.eth.Contract(
-        Mugstars.abi,
+    const contract = new ethers.Contract(
         '0x04bf4ea0560f06e0ef5663c2b0eff29c195553b2',
+        Mugstars.abi,
+        provider
     );
 
     

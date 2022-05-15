@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Form, Button } from 'react-bootstrap'
 import ReCAPTCHA from "react-google-recaptcha";
+import Network from './utils/Network'
+import { Form, Button } from 'react-bootstrap';
 
 const Whitelist = ({account, networkID}) => {
     const form = useRef()
 
-    const [networkMessage, setNetworkMessage] = useState();
+    // const [networkMessage, setNetworkMessage] = useState();
     const [cursor, ] = useState("no-drop")
     const [disabled, setDisabled] = useState(true)
     const [btnText, setBtnText] = useState("WHITELIST COMING SOON")
@@ -44,34 +45,6 @@ const Whitelist = ({account, networkID}) => {
       }
       }
 
-    useEffect(() => {
-        if(networkID === 1 ) {
-          setNetworkMessage("Enter your information below to get on the Whitelist")
-        } 
-        if(networkID === 5777) {
-          setNetworkMessage(`You are connected to your localhost network.  Log in to the Etherium Mainnet to access the Whitelist.`)
-        } 
-        if(networkID === 3 ) {
-          setNetworkMessage("You are connected to the Ropsten Test Network.  Log in to the Etherium Mainnet to access the Whitelist.")
-        } 
-        if(networkID === 42 ) {
-          setNetworkMessage("You are connected to the Kovan Test Network.  Log in to the Etherium Mainnet to access the Whitelist.")
-        } 
-        if(networkID === 4 ) {
-          setNetworkMessage(`You are connected to the Rinkeby Test Network. Log in to the Etherium Mainnet to access the Whitelist.`)
-        } 
-        if(networkID === 5 ) {
-          setNetworkMessage("You are connected to the Goerli Test Network.  Log in to the Etherium Mainnet to access the Whitelist.")
-        } 
-        if(networkID === 1666600000 ) {
-          setNetworkMessage("You are connected to the Harmony One Network.  Log in to the Etherium Mainnet to access the Whitelist.")
-        } 
-        if(networkID === "undefined" ) {
-          setNetworkMessage("Log in to the Etherium Mainnet to access the Whitelist.")
-        } 
-      }, [networkID]);
-
-
     const joinWhitelist = (e) => {
       e.preventDefault();
       // window.grecaptcha.reset();
@@ -104,7 +77,7 @@ const Whitelist = ({account, networkID}) => {
             <div className="message">Sign in to your wallet to get access to the PreSale Whitelist</div>
           ) : account ? (
             <div>
-            <div className='message'>{ networkMessage }</div>
+            < Network networkID={ networkID } />
             { account && networkID === 1 ? (
               <Form method="POST" ref={form} id='join-whitelist' className="form" onSubmit={joinWhitelist}>
                 <Form.Group className="fGroup">

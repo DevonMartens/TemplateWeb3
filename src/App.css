@@ -49,16 +49,20 @@ body {
   max-width: 95vw;
 }
 
+/* ***************** Network Message ***************** */
+.network p {
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+  color: white;
+  text-align: center;
+ }
+
 /* ***************** WHITELIST PAGE ***************** */
 .whitelist {
   grid-column: 4/6;
   grid-row: 4/8;
   justify-self: center;
-}
-
-.whitelist .message {
- margin: 5vh 0 1vh;
- font-size: 1rem;
 }
 
 .whitelist .form {
@@ -191,14 +195,14 @@ input[type=number]::-webkit-inner-spin-button {
 
 .socialIcons a .icon {
   color: white;
-  border-radius: 50%;
+  font-size: 3em;
   margin: 0 1vw;
-  padding: .25em;
+  padding: .5vh .5vw;
 }
 
 .socialIcons a:hover .icon {
-  background-color: #E21C21;
-  border-radius: 50%;
+  border: 1px solid #E21C21;
+  border-radius: 5px;
   margin: 0 1vw;
 }
 
