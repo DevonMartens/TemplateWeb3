@@ -1,55 +1,46 @@
 import { useState, useEffect } from 'react'
-import { ethers } from 'ethers'
 import './App.css'
 import SwimLogo from './images/swim-logo.png'
 import Signature from './images/signature.png'
-// import Mint from './components/Mint'
-import Whitelist from './components/Whitelist'
+import Mint from './components/Mint'
+// import Whitelist from './components/Whitelist'
 import Social from './components/Social'
 
 
 function App() {
 
-  const [ethereumStatus, setEthereumStatus] = useState(false)
-  // console.log(`It is ${ethereumStatus} that you are connected to MetaMask`)
-  const [account, setAccount] = useState()
-  const [shortAcct, setShortAcct] = useState()
+  let [accounts, setAccounts] = useState([])
   const [networkID, setNetworkID] = useState()
 
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const isConnected=Boolean(accounts[0])
+
 
   async function loadAccounts() {
-  
-    const accounts = await provider.listAccounts();
-    setAccount(accounts[0])
-  
-    setShortAcct(String(accounts[0].substring(0,3) + "..." + accounts[0].substring(38)))
+    if(window.ethereum) {
+      const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    })
+    setAccounts(accounts[0])
+    }
   }
 
-  async function loadNetwork() {
-
-    const { chainId } = await provider.getNetwork();
-    setNetworkID(chainId)
-  
-  }
+  // async function loadNetwork() {
+  //   const { chainId } = await provider.getNetwork();
+  //   setNetworkID(chainId)
+  //   console.log(chainId)
+  // }
   
   useEffect(() => {
      loadAccounts()
-     loadNetwork()
+    //  loadNetwork()
   })
 
   useEffect(()=> {
 
-    if(window.ethereum){
-      setEthereumStatus(true)
-    } else {
-      console.log("Not connected to MetaMask")
-    }
-
     const changeInChainListener = async () => {
 
     await window.ethereum.on('accountsChanged', function(account) {
-      setAccount(account);
+      setAccounts(account);
       window.location.reload();
     })
 
@@ -61,14 +52,19 @@ function App() {
 
   changeInChainListener();
 
-  }, [account, networkID, ethereumStatus])
+  }, [accounts, networkID])
 
   return (
     <div className="App">
       <img src={SwimLogo} alt="Swim Logo" className="swimLogo"/>
       <img src={Signature} alt="Bassy's Signature" className="bassyLogo"/>
-      {/* <Mint account={account} networkID={networkID} provider={provider} shortAcct={shortAcct} /> */}
-      <Whitelist account={account} networkID={networkID} shortAcct={shortAcct}/>
+      {isConnected ? (
+        <p>You are Connected to MetaMask</p>
+      ) : (
+        <p>Please connect to MetaMask</p> 
+      )}
+      <Mint accounts={accounts} setAccounts={ setAccounts} />
+      {/* <Whitelist accounts={accounst} setAccounts={ setAccounts} /> */}
       <Social />
     </div>
   );

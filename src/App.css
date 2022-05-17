@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #202124;
   background-image: url('./images/background.png');
@@ -27,6 +31,12 @@ body {
   grid-gap: 1em;
 }
 
+.App p {
+  color: white; 
+  width: 50vw;
+  margin: 1rem;
+}
+
 /* ***************** LOGOS ***************** */
 
 .swimLogo {
@@ -45,7 +55,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   height: auto;
-  transition: all 2s;
+  transition: all .5s;
   max-width: 95vw;
 }
 
@@ -141,6 +151,11 @@ body {
   width: 100%;
   justify-self: center;
   transition: all 2s;
+}
+
+.mint h1 {
+  text-align: center;
+  color: white
 }
 
 .card {
