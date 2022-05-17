@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { useSprings, animated, interpolate } from 'react-spring'
 import { useGesture } from 'react-use-gesture'
-import './albums.css'
 import cards from './cards'
+import './albums.css'
 
 
 

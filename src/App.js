@@ -60,17 +60,17 @@ function App() {
     <div className="App">
       <img src={SwimLogo} alt="Swim Logo" className="swimLogo"/>
       <img src={Signature} alt="Bassy's Signature" className="bassyLogo"/>
-      <Albums />
+      <Albums className="albums"/>
       {isConnected ? (
         <>
-          <p>You are Connected to MetaMask</p>
+          <p className="notification">You are Connected to MetaMask</p>
         </>
       ) : (
         <>
-          <p>Please connect to MetaMask</p>
+          <p className="notification">Please connect to MetaMask</p>
         </> 
         )}
-        < Network networkID={ networkID } />
+        < Network id="network" networkID={ networkID } />
         { accounts && networkID === 1 ? (
           <>
               <Mint accounts={accounts} />
