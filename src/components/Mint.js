@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 const mebNFTAddress = process.env.REACT_APP_CONTRACT_ADDRESS
 console.log(mebNFTAddress)
 
-const Mint = ({ accounts, setAccounts }) => {
+const Mint = ({ accounts }) => {
 
     const [mintAmount, setMintAmount] = useState(1)
     const isConnected = Boolean(accounts[0]);

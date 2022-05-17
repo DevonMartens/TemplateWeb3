@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import ReCAPTCHA from "react-google-recaptcha";
-import Network from './utils/Network'
 import { Form, Button } from 'react-bootstrap';
 
-const Whitelist = ({account, networkID}) => {
+const Whitelist = ({ account }) => {
     const form = useRef()
 
     // const [networkMessage, setNetworkMessage] = useState();
@@ -73,50 +72,45 @@ const Whitelist = ({account, networkID}) => {
 
   return (
     <div className='whitelist'>
-        { !account ? (
-            <div className="message">Sign in to your wallet to get access to the PreSale Whitelist</div>
-          ) : account ? (
-            <div>
-            < Network networkID={ networkID } />
-            { account && networkID === 1 ? (
-              <Form method="POST" ref={form} id='join-whitelist' className="form" onSubmit={joinWhitelist}>
-                <Form.Group className="fGroup">
-                <Form.Control type="text" value={current} hidden name="TimeStamp" required readOnly />
-                <Form.Control type="text" name='Name' placeholder="NAME >>> John Smith" required />
-                <Form.Control type="email" name='Email' placeholder="EMAIL >>> johnsmith@gmail.com" required />
-                <Form.Control type="text" name='Discord' placeholder="DISCORD >>> johnny#0357" required />
-                <Form.Control type="text" name='Wallet_Address' className="account" value={`${account}`} required readOnly />
-                <Form.Control type="text" value={city} hidden name="City" required readOnly />
-                <Form.Control type="text" value={country} hidden name="Country" required readOnly />
-                <Form.Control type="text" value={countryCode} hidden name="Country_Code" required readOnly />
-                <Form.Control type="text" value={ipAddress} hidden name="IP_Address" required readOnly />
-                </Form.Group>
-                <Form.Group className="endForm">
-                <ReCAPTCHA
-                  sitekey={`${recaptcha_key}`}
-                  onChange={onChange}
-                  className="recaptcha"
-                  />
-                <Button
-                  className="submitBtn" 
-                  type='submit' 
-                  value='send'
-                  disabled={disabled} 
-                  style={{
-                    cursor: `${cursor}`, 
-                    backgroundColor: `${btnColor}`,
-                    color: `${textColor}`
-                    }}
-                    >
-                    {btnText}
-                </Button>
-                </Form.Group>
-              </Form>
-            ) : (null)}
-            </div>
-          ) : (null)}
-    </div>
-  )
-}
+      { !account ? (
+          <div className="message">Sign in to your wallet to get access to the PreSale Whitelist</div>
+        ) : (
+          <Form method="POST" ref={form} id='join-whitelist' className="form" onSubmit={joinWhitelist}>
+            <Form.Group className="fGroup">
+            <Form.Control type="text" value={current} hidden name="TimeStamp" required readOnly />
+            <Form.Control type="text" name='Name' placeholder="NAME >>> John Smith" required />
+            <Form.Control type="email" name='Email' placeholder="EMAIL >>> johnsmith@gmail.com" required />
+            <Form.Control type="text" name='Discord' placeholder="DISCORD >>> johnny#0357" required />
+            <Form.Control type="text" name='Wallet_Address' className="account" value={`${account}`} required readOnly />
+            <Form.Control type="text" value={city} hidden name="City" required readOnly />
+            <Form.Control type="text" value={country} hidden name="Country" required readOnly />
+            <Form.Control type="text" value={countryCode} hidden name="Country_Code" required readOnly />
+            <Form.Control type="text" value={ipAddress} hidden name="IP_Address" required readOnly />
+            </Form.Group>
+            <Form.Group className="endForm">
+            <ReCAPTCHA
+              sitekey={`${recaptcha_key}`}
+              onChange={onChange}
+              className="recaptcha"
+              />
+            <Button
+              className="submitBtn" 
+              type='submit' 
+              value='send'
+              disabled={disabled} 
+              style={{
+                cursor: `${cursor}`, 
+                backgroundColor: `${btnColor}`,
+                color: `${textColor}`
+                }}
+                >
+                {btnText}
+            </Button>
+            </Form.Group>
+          </Form>
+        )}
+      </div>
+    )
+  }
 
 export default Whitelist

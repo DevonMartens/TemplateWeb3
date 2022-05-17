@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import SwimLogo from './images/swim-logo.png'
 import Signature from './images/signature.png'
+import Albums from './components/Albums'
+import Network from './components/utils/Network'
 import Mint from './components/Mint'
 // import Whitelist from './components/Whitelist'
 import Social from './components/Social'
@@ -58,13 +60,27 @@ function App() {
     <div className="App">
       <img src={SwimLogo} alt="Swim Logo" className="swimLogo"/>
       <img src={Signature} alt="Bassy's Signature" className="bassyLogo"/>
+      <Albums />
       {isConnected ? (
-        <p>You are Connected to MetaMask</p>
+        <>
+          <p>You are Connected to MetaMask</p>
+        </>
       ) : (
-        <p>Please connect to MetaMask</p> 
-      )}
-      <Mint accounts={accounts} setAccounts={ setAccounts} />
-      {/* <Whitelist accounts={accounst} setAccounts={ setAccounts} /> */}
+        <>
+          <p>Please connect to MetaMask</p>
+        </> 
+        )}
+        < Network networkID={ networkID } />
+        { accounts && networkID === 1 ? (
+          <>
+              <Mint accounts={accounts} />
+              {/* <Whitelist accounts={accounst} /> */}
+          </>
+        ): (
+          <>
+
+          </>
+        )}
       <Social />
     </div>
   );
