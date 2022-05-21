@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 
-const Network = ({networkID}) => {
+const WhitelistNetwork = ({networkID}) => {
 
   const [networkMessage, setNetworkMessage] = useState("")
 
   useEffect(() => {
     if(networkID === 1 ) {
-      setNetworkMessage("Enter your information below to get on the Whitelist")
+      setNetworkMessage(`You are connected to the Etherium Mainnet.`)
     } 
     if(networkID === 5777) {
       setNetworkMessage(`You are connected to your localhost network.  Log in to the Etherium Mainnet to access the Whitelist.`)
@@ -26,7 +26,7 @@ const Network = ({networkID}) => {
     if(networkID === 1666600000 ) {
       setNetworkMessage("You are connected to the Harmony One Network.  Log in to the Etherium Mainnet to access the Whitelist.")
     } 
-    if(networkID === "undefined" ) {
+    if(networkID === "undefined" || 'null') {
       setNetworkMessage("Log in to the Etherium Mainnet to access the Whitelist.")
     } 
   }, [networkID])
@@ -41,4 +41,4 @@ const Network = ({networkID}) => {
 
 }
 
-export default Network
+export default WhitelistNetwork

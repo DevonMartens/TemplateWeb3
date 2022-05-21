@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import { useSprings, animated, interpolate } from 'react-spring'
+import { useSprings, animated } from 'react-spring'
 import { useGesture } from 'react-use-gesture'
 import cards from './cards'
 import './albums.css'
-
-
 
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = i => ({ x: 0, y: i * -4, scale: 1, rot: -10 + Math.random() * 20, delay: i * 100 })
@@ -33,9 +31,9 @@ function Albums() {
   // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return props.map(({ x, y, rot, scale }, i) => (
     <div id="cards">
-    <animated.div key={i} style={{ transform: interpolate([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`) }}>
+    <animated.div key={i} style={{ transform: to([x, y], (x, y) => `translate3d(${x}px,${y}px,0)`) }}>
       {/* This is the card itself, we're binding our gesture to it (and inject its index so we know which is which) */}
-      <animated.div {...bind(i)} style={{ transform: interpolate([rot, scale], trans), backgroundImage: `url(${cards[i]})` }} />
+      <animated.div {...bind(i)} style={{ transform: to([rot, scale], trans), backgroundImage: `url(${cards[i]})` }} />
     </animated.div>
     </div>
   ))

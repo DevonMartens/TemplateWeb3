@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react'
+import { ethers } from 'ethers'
 import './App.css'
 import SwimLogo from './images/swim-logo.png'
 import Signature from './images/signature.png'
-import Albums from './components/Albums'
-import Network from './components/utils/Network'
-import Mint from './components/Mint'
-// import Whitelist from './components/Whitelist'
+// import Albums from './components/Albums'
+// import WhitelistNetwork from './components/utils/WhitelistNetwork'
+import Whitelist from './components/Whitelist'
+// import MintNetwork from './components/utils/MintNetwork'
+// import Mint from './components/Mint'
 import Social from './components/Social'
 
 
 function App() {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
 
   let [accounts, setAccounts] = useState([])
   const [networkID, setNetworkID] = useState()
@@ -26,15 +29,14 @@ function App() {
     }
   }
 
-  // async function loadNetwork() {
-  //   const { chainId } = await provider.getNetwork();
-  //   setNetworkID(chainId)
-  //   console.log(chainId)
-  // }
+  async function loadNetwork() {
+    const { chainId } = await provider.getNetwork();
+    setNetworkID(chainId)
+  }
   
   useEffect(() => {
      loadAccounts()
-    //  loadNetwork()
+     loadNetwork()
   })
 
   useEffect(()=> {
@@ -56,11 +58,13 @@ function App() {
 
   }, [accounts, networkID])
 
+  console.log("networkID: ", networkID)
+
   return (
     <div className="App">
       <img src={SwimLogo} alt="Swim Logo" className="swimLogo"/>
       <img src={Signature} alt="Bassy's Signature" className="bassyLogo"/>
-      <Albums className="albums"/>
+      {/* <Albums className="albums"/> */}
       {isConnected ? (
         <>
           <p className="notification">You are Connected to MetaMask</p>
@@ -70,15 +74,14 @@ function App() {
           <p className="notification">Please connect to MetaMask</p>
         </> 
         )}
-        < Network id="network" networkID={ networkID } />
-        { accounts && networkID === 1 ? (
+      { accounts ? (
+          <Whitelist accounts={accounts} />
+      ) : (
           <>
-              <Mint accounts={accounts} />
-              {/* <Whitelist accounts={accounst} /> */}
-          </>
-        ): (
-          <>
-
+          {/* </> <div id="network" >
+            < MintNetwork networkID={ networkID }/>
+          </div>
+          {/* <Mint accounts={accounts} /> */}
           </>
         )}
       <Social />
