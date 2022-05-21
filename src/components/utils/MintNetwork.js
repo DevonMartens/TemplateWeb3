@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 
 const MintNetwork = ({networkID}) => {
+  console.log(networkID)
 
   const [networkMessage, setNetworkMessage] = useState("")
 
@@ -26,8 +27,8 @@ const MintNetwork = ({networkID}) => {
     if(networkID === 1666600000 ) {
       setNetworkMessage("You are connected to the Harmony One Network.  Log in to the Etherium Mainnet to access the Minting.")
     } 
-    if(networkID === "undefined" || 'null') {
-      setNetworkMessage("Log in to the Etherium Mainnet to access the Minting.")
+    if(networkID === "undefined" || null) {
+      setNetworkMessage("Log in to the Etherium Mainnet to access Minting.")
     } 
   }, [networkID])
         

@@ -6,8 +6,8 @@ import Signature from './images/signature.png'
 // import Albums from './components/Albums'
 // import WhitelistNetwork from './components/utils/WhitelistNetwork'
 import Whitelist from './components/Whitelist'
-// import MintNetwork from './components/utils/MintNetwork'
-// import Mint from './components/Mint'
+import MintNetwork from './components/utils/MintNetwork'
+import Mint from './components/Mint'
 import Social from './components/Social'
 
 
@@ -75,15 +75,14 @@ function App() {
         </> 
         )}
       { accounts ? (
-          <Whitelist accounts={accounts} />
-      ) : (
-          <>
-          {/* </> <div id="network" >
+        <>
+          <div id="network" >
             < MintNetwork networkID={ networkID }/>
           </div>
-          {/* <Mint accounts={accounts} /> */}
+          {/* <Whitelist accounts={accounts} /> */}
+          <Mint accounts={accounts} />
           </>
-        )}
+      ) : (null)}
       <Social />
     </div>
   );
